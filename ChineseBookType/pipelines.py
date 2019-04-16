@@ -14,12 +14,12 @@ class ChinesebooktypePipeline(object):
         }
     conn = cx_Oracle.connect(**conn_dct)
     cur = conn.cursor()
-    sql = "insert into chinesebooktype (code, title) values (:1, :2)"
+    sql = "insert into chinesebooktype_new (code, title) values (:1, :2)"
 
     def process_item(self, item, spider):
 
         l  = [item["code"], item["title"]]
-        
+
         self.cur.execute(self.sql, l)
         self.conn.commit()
 

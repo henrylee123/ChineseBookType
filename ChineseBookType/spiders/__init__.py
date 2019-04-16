@@ -9,17 +9,21 @@ from ..items import ChinesebooktypeItem
 class gzssztSpider(Spider):
 
     name = "ChineseBookSpider"
-    url = "http://ztflh.xhma.com/html/{num}.html"
+    url = "http://ztflh.xhma.com"
 
+    host = "http://ztflh.xhma.com"
 
     def start_requests(self):
-        for num in range(1, 45836):
-            yield Request(url=self.url.format(num=str(num)))
+        yield Request(url=self.url)
 
     def parse(self, response):
-        selector_list = response.xpath("//div[@class='col-xs-12 col-sm-4']/div/a")
-        for selector in selector_list:
-            items = ChinesebooktypeItem()
-            items["title"] = selector.xpath("./@title").extract()[0]
-            items["code"] = selector.xpath("./span[1]/text()").extract()[0]
-            yield items
+            selector_list = response.xpath("//div[@class='col-xs-12 col-sm-4']/div/a")
+            for selector in selector_list:
+                url = selector.xpath("./@href").extract()[0]
+                if (self.host + url) == response.url:
+                    raise Exception('haha')
+                items = ChinesebooktypeItem()
+                items["title"] = selector.xpath("./@title").extract()[0]
+                items["code"] = selector.xpath("./span[1]/text()").extract()[0]
+                yield items
+                yield Request(url=self.host+url, callback=self.parse)
