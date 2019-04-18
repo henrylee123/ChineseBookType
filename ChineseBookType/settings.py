@@ -14,7 +14,7 @@ BOT_NAME = 'ChineseBookType'
 SPIDER_MODULES = ['ChineseBookType.spiders']
 NEWSPIDER_MODULE = 'ChineseBookType.spiders'
 
-
+LOG_LEVEL = "WARNING"
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'ChineseBookType (+http://www.yourdomain.com)'
 
@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'ChineseBookType.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay

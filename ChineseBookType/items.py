@@ -11,6 +11,11 @@ import scrapy
 class ChinesebooktypeItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    code = scrapy.Field()
-    title = scrapy.Field()
+    fcode = scrapy.Field()
+    # name = scrapy.Field()
+    ftitle = scrapy.Field()    # name = scrapy.Field()
+    flevel = scrapy.Field()    # name = scrapy.Field()
+    flastcode = scrapy.Field()    # name = scrapy.Field()
+    flasttitle = scrapy.Field()    # name = scrapy.Field()
+    furl = scrapy.Field()    # name = scrapy.Field()
 
